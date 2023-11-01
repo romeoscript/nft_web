@@ -2,12 +2,16 @@ import React from 'react'
 import nft1 from '../assets/nft1.png'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import AreaCharts from '../components/ReactCharts';
+import Footer from "../components/Footer";
+import img1 from "../assets/Nfts/bighead.svg";
+import NftItem from '../components/sections/NFT';
 
 
 const Detail = () => {
     return (
         <>
-            <section className='flex justify-between p-[2rem]'>
+            <section className='flex justify-between p-[2rem] my-[3rem]'>
                 <div>
                     <img src={nft1} alt="" className='w-[400px] h-[400px] rounded-md object-cover' />
                 </div>
@@ -26,18 +30,39 @@ const Detail = () => {
                 <Tabs>
                     <TabList>
                         <Tab>Description</Tab>
-                        <Tab>Title 2</Tab>
+                        <Tab>Price History</Tab>
                     </TabList>
 
                     <TabPanel>
-                        <h2>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio quasi, amet officia distinctio quod beatae fuga voluptates quisquam consequatur maiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit laboriosam consequuntur provident. Reiciendis facere, quo natus molestias debitis quam dolorum.</h2>
+                        <h2 className='w-4/5 my-[2rem]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio quasi, amet officia distinctio quod beatae fuga voluptates quisquam consequatur maiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit laboriosam consequuntur provident. Reiciendis facere, quo natus molestias debitis quam dolorum.</h2>
+                        <div className='flex gap-20 capitalize'>
+                            <figure>
+                                <span className='block'>contract address</span>
+                                <span className='block my-[1rem]'>token id </span>
+                                <span className='block'> blockchain</span>
+                            </figure>
+                            <figure>
+                                <span className='block'>contract address</span>
+                                <span className='block my-[1rem]'>token id </span>
+                                <span className='block'> blockchain</span>
+                            </figure>
+                        </div>
                     </TabPanel>
                     <TabPanel>
-                        <h2>Any content 2</h2>
+                        isisisi
+                        <AreaCharts />
                     </TabPanel>
                 </Tabs>
-            </section>
 
+                <div>
+                    <figure className='flex items-center justify-between text-3xl m-[4rem]'>
+                        <p> Another NFTS </p>     <button className="btn btn-outline btn-primary"> Purchase Now</button>
+                    </figure>
+                    <NftItem img={img1} number={852} price={1} />
+                </div>
+            </section>
+            <br /> <br /> <br />
+            <Footer />
         </>
     )
 }

@@ -8,12 +8,15 @@ import Team from "../components/sections/Team";
 import Footer from "../components/Footer";
 import Faq from "../components/sections/Faq";
 import ScrollToTop from "../components/ScrollToTop";
+import CreateInfo from "../components/sections/CreateInfo";
 
 function Home() {
   return (
     <main>
       <Navigation />
       <HomeSection />
+
+      <CreateInfo />
       <About />
       <Roadmap />
       <Team />
