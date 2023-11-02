@@ -4,11 +4,13 @@ import ETH from "../../assets/icons8-ethereum-48.png";
 
 const ImgContainer = styled.div`
   width: 15rem;
+  height: 500px
   margin: 2rem 1rem;
   background-color: ${(props) => props.theme.body};
-
+  background-color: ${(props) => props.theme.text};
   border-radius: 20px;
   cursor: pointer;
+  margin: 1.4rem 0;
 
   @media (max-width: 48em) {
     width: 12rem;
@@ -19,7 +21,9 @@ const ImgContainer = styled.div`
 
   img {
     width: 100%;
-    height: auto;
+    height: 240px;
+    border-radius:20px;
+   
   }
 `;
 
@@ -65,13 +69,20 @@ const Price = styled.div`
 
 
 
-const NftItem = ({ img, number = 0, price = 0 }) => {
+const NftItem = ({ img, name, number = 0, price = 0 }) => {
+    const truncate = (str, length) => {
+        if (str.length > length) {
+          return str.slice(0, length) + '...';
+        }
+        return str;
+      };
+      
     return (
       <ImgContainer>
-        <img width={500} height={400} src={img} alt="The Weirdos" />
+        <img  className='object-contain h-full w-[2px]' src={img} alt="The Weirdos" />
         <Details>
           <div>
-            <span>Weirdos</span> <br />
+            <span>{truncate(name, 10)}</span> <br />
             <h1>#{number}</h1>
           </div>
   
@@ -79,7 +90,7 @@ const NftItem = ({ img, number = 0, price = 0 }) => {
             <span>Price</span>
             <Price>
               <img width={200} height={200} src={ETH} alt="ETH" />
-              <h1>{Number(price).toFixed(1)}</h1>
+              <h1>{Number(price.toFixed(6))}</h1>
             </Price>
           </div>
         </Details>

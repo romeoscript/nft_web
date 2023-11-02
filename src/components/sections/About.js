@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import styled, { ThemeProvider } from "styled-components";
 // import Carousel from '../Carousel'
 import Button from "../Button";
-import { dark } from "../../styles/Themes";
+import { dark ,light} from "../../styles/Themes";
 import Loading from "../Loading";
 
 const Carousel = lazy(() => import("../Carousel"));
@@ -10,7 +10,7 @@ const Carousel = lazy(() => import("../Carousel"));
 const Section = styled.section`
   min-height: 100vh;
   width: 100%;
-  background-color: ${(props) => props.theme.text};
+  background-color: ${(props) => props.theme.body};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -60,7 +60,7 @@ const Box = styled.div`
 const Title = styled.h2`
   font-size: ${(props) => props.theme.fontxxl};
   text-transform: capitalize;
-  color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
   align-self: flex-start;
   width: 80%;
   margin: 0 auto;
@@ -78,7 +78,7 @@ const Title = styled.h2`
 `;
 const SubText = styled.p`
   font-size: ${(props) => props.theme.fontlg};
-  color: ${(props) => props.theme.body};
+  color: ${(props) => props.theme.text};
   align-self: flex-start;
   width: 80%;
   margin: 1rem auto;
@@ -97,7 +97,7 @@ const SubText = styled.p`
 `;
 const SubTextLight = styled.p`
   font-size: ${(props) => props.theme.fontmd};
-  color: ${(props) => `rgba(${props.theme.bodyRgba},0.6)`};
+  color: ${(props) => `rgba(${props.theme.body},0.6)`};
   align-self: flex-start;
   width: 80%;
   margin: 1rem auto;
@@ -156,7 +156,7 @@ const About = () => {
             utilities.
           </SubTextLight>
           <ButtonContainer>
-            <ThemeProvider theme={dark}>
+            <ThemeProvider theme={light}>
               <Button text="JOIN OUR DISCORD" link="#" newTab={true} />
             </ThemeProvider>
           </ButtonContainer>

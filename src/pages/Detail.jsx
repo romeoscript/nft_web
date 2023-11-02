@@ -58,7 +58,7 @@ const Detail = () => {
                     <figure className='flex items-center justify-between text-3xl m-[4rem]'>
                         <p> Another NFTS </p>     <button className="btn btn-outline btn-primary"> Purchase Now</button>
                     </figure>
-                    <NftItem img={img1} number={852} price={1} />
+                    {/* <NftItem img={img1} number={852} price={1} /> */}
                 </div>
             </section>
             <br /> <br /> <br />

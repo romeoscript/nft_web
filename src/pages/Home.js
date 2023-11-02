@@ -18,8 +18,9 @@ function Home() {
 
       <CreateInfo />
       <About />
-      <Roadmap />
       <Team />
+      <Roadmap />
+     
       <Faq />
       <Footer />
       <ScrollToTop />

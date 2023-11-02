@@ -1,7 +1,6 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState } from "react";
 import styled from "styled-components";
-
-import img1 from "../../assets/Nfts/bighead.svg";
+import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading";
 import NftItem from "./NFT";
 
@@ -49,10 +48,40 @@ const Container = styled.div`
   }
 `;
 
-
-
+const fetchNFTs = async () => {
+  const response = await fetch("https://nftapis.onrender.com/nft");
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return response.json();
+};
 
 const Team = () => {
+  const {
+    data: nfts,
+    error,
+    isError,
+    isLoading,
+  } = useQuery({
+    queryFn: () => fetchNFTs(),
+    queryKey: ["nfts"],
+  });
+  const pageSize = 12;
+  const [currentPage, setCurrentPage] = useState(1);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  console.log(nfts);
+  const totalPages = Math.ceil(nfts.length / pageSize);
+  const startIndex = (currentPage - 1) * pageSize;
+  const endIndex = startIndex + pageSize - 1;
+  const currentNfts = nfts.slice(startIndex, endIndex + 1);
   return (
     <Section id="team">
       <Suspense fallback={<Loading />}>
@@ -60,14 +89,43 @@ const Team = () => {
       </Suspense>
       <Title>Team</Title>
       <Container>
-        <NftItem img={img1} number={852} price={1} />
-        <NftItem img={img1} number={852} price={1} />
-        <NftItem img={img1} number={852} price={1} />
-        <NftItem img={img1} number={852} price={1} />
-        <NftItem img={img1} number={852} price={1} />
-        <NftItem img={img1} number={852} price={1} />
-        <NftItem img={img1} number={852} price={1} />
+        {currentNfts.map((nft) => {
+          return (
+            <NftItem
+              key={nft.token_id}
+              img={nft.image}
+              number={nft.token_id.substring(0, 5)}
+              price={nft.price * 100000}
+              name={nft.name}
+            />
+          );
+        })}
       </Container>
+      <br />
+      <br />
+      <br />
+     
+       
+      <div className="join absolute right-[10%] bottom-[2%]">
+        <button
+          disabled={currentPage === 1}
+          onClick={() => setCurrentPage(currentPage - 1)}
+          className="join-item btn"
+        >
+          «
+        </button>
+        <button className="join-item btn">
+          {" "}
+          Page {currentPage} of {totalPages}{" "}
+        </button>
+        <button
+          disabled={currentPage === totalPages}
+          onClick={() => setCurrentPage(currentPage + 1)}
+          className="join-item btn"
+        >
+          »
+        </button>
+      </div>
     </Section>
   );
 };
