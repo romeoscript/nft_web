@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading";
 import NftItem from "./NFT";
+import { Link } from "react-router-dom";
 
 const ConfettiComponent = lazy(() => import("../Confetti"));
 
@@ -65,6 +66,8 @@ const Team = () => {
   } = useQuery({
     queryFn: () => fetchNFTs(),
     queryKey: ["nfts"],
+    cacheTime: 1000 * 60 * 5, // cache data for 5 minutes
+    staleTime: 1000 * 60,
   });
   const pageSize = 12;
   const [currentPage, setCurrentPage] = useState(1);
@@ -91,21 +94,22 @@ const Team = () => {
       <Container>
         {currentNfts.map((nft) => {
           return (
-            <NftItem
-              key={nft.token_id}
-              img={nft.image}
-              number={nft.token_id.substring(0, 5)}
-              price={nft.price * 100000}
-              name={nft.name}
-            />
+            <Link to={`nft/${nft.token_id}`}>
+              <NftItem
+                key={nft.token_id}
+                img={nft.image}
+                number={nft.token_id.substring(0, 5)}
+                price={nft.price * 100000}
+                name={nft.name}
+              />
+            </Link>
           );
         })}
       </Container>
       <br />
       <br />
       <br />
-     
-       
+
       <div className="join absolute right-[10%] bottom-[2%]">
         <button
           disabled={currentPage === 1}

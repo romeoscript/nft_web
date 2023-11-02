@@ -4,23 +4,56 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import AreaCharts from '../components/ReactCharts';
 import Footer from "../components/Footer";
-import img1 from "../assets/Nfts/bighead.svg";
-import NftItem from '../components/sections/NFT';
+import { useQuery } from '@tanstack/react-query';
+import { useParams } from 'react-router-dom';
 
+const fetchNFT = async (tokenId) => {
+    const response = await fetch(`https://nftapis.onrender.com/nft/${tokenId}`);
+    if (!response.ok) {
+        throw new Error("Network response was not ok");
+    }
+    return response.json();
+};
 
 const Detail = () => {
+    
+    const { tokenId } = useParams();
+    
+    const {
+        data: nft,
+        error,
+        isError,
+        isLoading,
+    } = useQuery({
+        queryFn: () => fetchNFT(tokenId),
+        queryKey: ["nft", tokenId],
+        cacheTime: 1000 * 60 * 5, // cache data for 5 minutes
+        staleTime: 1000 * 60,
+    });
+
+    // if (isLoading) {
+    //     return <Loading />;
+    // }
+
+    if (isError) {
+        return <div>Error: {error.message}</div>;
+    }
+
+    if (!nft) {
+        return <div>NFT not found</div>;
+    }
     return (
         <>
             <section className='flex justify-between p-[2rem] my-[3rem]'>
                 <div>
-                    <img src={nft1} alt="" className='w-[400px] h-[400px] rounded-md object-cover' />
+                    <img src={nft.image} alt="" className='w-[400px] h-[400px] rounded-md object-cover' />
                 </div>
                 <div className='basis-[68%]'>
-                    <h3 className='font-bold text-3xl capitalize text-white'>#1119 seagull</h3>
-                    <p className='my-[1rem]'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam delectus debitis incidunt unde quae dolor ipsa aut esse cum optio.</p>
+                    <h3 className='font-bold text-3xl capitalize text-white'>{nft.name}</h3>
+                    <p className='my-[1rem]'>{nft.description}</p>
 
                     <span className='capitalize text-gray-500 ' >price Bid</span>
-                    <h2 className='my-[0.5rem] mb-[3rem] text-white'>10.89ETH</h2>
+                    <h2 className='my-[0.5rem] mb-[3rem] text-white'>{nft.price} ETH</h2>
 
                     <button className="btn btn-outline btn-primary"> Purchase Now</button>
                 </div>
@@ -34,7 +67,7 @@ const Detail = () => {
                     </TabList>
 
                     <TabPanel>
-                        <h2 className='w-4/5 my-[2rem]'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio quasi, amet officia distinctio quod beatae fuga voluptates quisquam consequatur maiores. Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit laboriosam consequuntur provident. Reiciendis facere, quo natus molestias debitis quam dolorum.</h2>
+                        <h2 className='w-4/5 my-[2rem]'>{nft.description}</h2>
                         <div className='flex gap-20 capitalize'>
                             <figure>
                                 <span className='block'>contract address</span>
@@ -42,14 +75,13 @@ const Detail = () => {
                                 <span className='block'> blockchain</span>
                             </figure>
                             <figure>
-                                <span className='block'>contract address</span>
-                                <span className='block my-[1rem]'>token id </span>
-                                <span className='block'> blockchain</span>
+                                <span className='block'>{nft.address}</span>
+                                <span className='block my-[1rem]'>#{tokenId} </span>
+                                <span className='block'> {nft.blockchain}</span>
                             </figure>
                         </div>
                     </TabPanel>
                     <TabPanel>
-                        isisisi
                         <AreaCharts />
                     </TabPanel>
                 </Tabs>

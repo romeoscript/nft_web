@@ -17,7 +17,7 @@ function App() {
         <ThemeProvider theme={light}>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/Nft/:id" element={<Detail />} />
+            <Route path="/nft/:tokenId" element={<Detail />} />
           </Routes>
         </ThemeProvider>
       </main>
