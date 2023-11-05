@@ -50,7 +50,7 @@ const Container = styled.div`
 `;
 
 const fetchNFTs = async () => {
-  const response = await fetch("https://nftapis.onrender.com/nft");
+  const response = await fetch("https://nftapi-production-405a.up.railway.app/nft");
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }

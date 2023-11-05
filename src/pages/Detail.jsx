@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 
 const fetchNFT = async (tokenId) => {
-    const response = await fetch(`https://nftapis.onrender.com/nft/${tokenId}`);
+    const response = await fetch(`https://nftapi-production-405a.up.railway.app/nft/${tokenId}`);
     if (!response.ok) {
         throw new Error("Network response was not ok");
     }

@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import styled, { ThemeProvider } from "styled-components";
 // import Carousel from '../Carousel'
 import Button from "../Button";
-import { dark ,light} from "../../styles/Themes";
+import { dark, light } from "../../styles/Themes";
 import Loading from "../Loading";
 
 const Carousel = lazy(() => import("../Carousel"));
@@ -142,12 +142,11 @@ const About = () => {
         </Box>
         <Box>
           <Title>
-            Welcome To The <br /> Weirdos Club.
+            Welcome To The <br /> Panda Club.
           </Title>
           <SubText>
-            The WEIRDOS CLUB is a private collection of NFTs—unique digital
-            collectibles. The Weirdos are stored as ERC-721 tokens on the
-            Ethereum blockchain and hosted on IPFS.
+            Welcome to your one-stop decentralized NFT market. Create and trade
+            NFTs across different blockchains and platforms.
           </SubText>
           <SubTextLight>
             With more than 200+ hand drawn traits, each NFT is unique and comes
