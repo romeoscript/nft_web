@@ -157,6 +157,7 @@ const About = () => {
           <ButtonContainer>
             <ThemeProvider theme={light}>
               <Button text="JOIN OUR DISCORD" link="#" newTab={true} />
+              <Button text="Create NFT" link="#" newTab={true} />
             </ThemeProvider>
           </ButtonContainer>
         </Box>
