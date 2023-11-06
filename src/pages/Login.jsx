@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 
 const Login = () => {
@@ -39,6 +40,9 @@ const Login = () => {
                     </div>
 
                     <button className="w-full btn btn-wide">Login</button>
+                    <label className="label">
+                        <span className="label-text-alt">New? <Link to='/register'> <a className='underline text-[blue]'>Register</a></Link></span>
+                    </label>
                 </form>
 
 

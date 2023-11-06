@@ -162,12 +162,12 @@ const Navigation = () => {
           <MenuItem onClick={() => scrollTo("faq")}>Faq</MenuItem>
           <MenuItem>
             <div className="mobile">
-              <Button text="Login" link="https://google.com" />
+              <Button text="Login" link="/login" />
             </div>
           </MenuItem>
         </Menu>
         <div className="desktop">
-          <Button text="Login" link="https://google.com" />
+          <Button text="Login" link="/login" />
         </div>
       </NavBar>
     </Section>

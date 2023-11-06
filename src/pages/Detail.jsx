@@ -6,6 +6,7 @@ import AreaCharts from '../components/ReactCharts';
 import Footer from "../components/Footer";
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
+import CopyToClipboardButton from '../components/Copy';
 
 const fetchNFT = async (tokenId) => {
     const response = await fetch(`https://nftapi-production-405a.up.railway.app/nft/${tokenId}`);
@@ -16,9 +17,9 @@ const fetchNFT = async (tokenId) => {
 };
 
 const Detail = () => {
-    
+
     const { tokenId } = useParams();
-    
+
     const {
         data: nft,
         error,
@@ -42,11 +43,15 @@ const Detail = () => {
     if (!nft) {
         return <div>NFT not found</div>;
     }
+
+    const total = nft.price + (nft.price * 0.25)
+    const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
+
     return (
         <>
-            <section className='flex justify-between p-[2rem] my-[3rem]'>
+            <section className='md:flex justify-between p-[2rem] my-[3rem]'>
                 <div>
-                    <img src={nft.image} alt="" className='w-[400px] h-[400px] rounded-md object-cover' />
+                    <img src={nft.image} alt="" className='md:w-[400px] w-full h-[400px] rounded-md object-cover' />
                 </div>
                 <div className='basis-[68%]'>
                     <h3 className='font-bold text-3xl capitalize text-white'>{nft.name}</h3>
@@ -55,8 +60,59 @@ const Detail = () => {
                     <span className='capitalize text-gray-500 ' >price Bid</span>
                     <h2 className='my-[0.5rem] mb-[3rem] text-white'>{nft.price} ETH</h2>
 
-                    <button className="btn btn-outline btn-primary"> Purchase Now</button>
+                    <button className="btn btn-outline btn-primary" onClick={() => document.getElementById('my_modal_3').showModal()}> Purchase Now</button>
                 </div>
+
+                {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                {/* <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>open modal</button> */}
+                <dialog id="my_modal_3" className="modal">
+                    <div className="modal-box">
+                        <form method="dialog">
+                            {/* if there is a button in form, it will close the modal */}
+                            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                        </form>
+                       <div className=' text-white flex flex-col items-center text-[10px] my-[1rem]'>
+                        Deposit {total} ETh to <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
+                        <CopyToClipboardButton textToCopy={text} /></p>
+                       </div>
+                        <figure className='flex justify-around gap-[3%] items-center'>
+                            <div>
+                                <img src={nft.image} alt="" className='w-[100px] h-[100px] rounded-md object-cover' />
+                            </div>
+                            <div className='basis-[68%]'>
+                                <h3 className='font-bold  capitalize text-white'>{nft.name}</h3>
+
+                                <p className='capitalize mt-[1rem] text-gray-500 text-[12px] ' >floor price   <span className='my-[0.5rem]  text-white'>{nft.price} ETH</span></p>
+
+                            </div>
+                        </figure>
+                        <div className='flex items-center gap-20 my-[2rem] capitalize'>
+                            <figure>
+                                <span className='block'>Royalty</span>
+                                <span className='block '>Service Fee</span>
+
+                            </figure>
+                            <figure>
+                                <span className='block '> 0% </span>
+                                <span className='block'> {25} %</span>
+                            </figure>
+                        </div>
+
+                        <div className='flex items-center gap-20 my-[2rem] capitalize'>
+                            <figure>
+                                <span className='block font-bold text-xl'>Total Price</span>
+
+
+                            </figure>
+                            <figure>
+                                <span className='block '> {total}  ETH</span>
+
+                            </figure>
+                        </div>
+
+                        <button className="btn btn-outline btn-success"> i have made this payment</button>
+                    </div>
+                </dialog>
             </section>
 
             <section className='w-4/5 m-auto'>

@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from '../components/Footer';
+import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
@@ -45,7 +46,10 @@ const Register = () => {
                         </label>
                     </div>
 
-                    <button className="w-full btn btn-wide">Login</button>
+                    <button className="w-full btn btn-wide">Register</button>
+                    <label className="label">
+                        <span className="label-text-alt">already have an account? <Link to='/login'> <a className='underline text-[blue]'>Login</a></Link></span>
+                    </label>
                 </form>
 
 
