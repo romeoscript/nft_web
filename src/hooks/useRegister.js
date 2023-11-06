@@ -44,19 +44,18 @@ export function useLoginUser() {
     return useMutation({
       mutationFn: loginUser,
       onSuccess: (data) => {
-        // This will run when the mutation is successful
-        toast.success('successful!', {
-          position: "top-right",
-          autoClose: 3000, // Adjust timing as needed
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        // Redirect after the toast message
-        setTimeout(() => navigate('/'), 3000); // Adjust the path and timing as needed
-      },
+        console.log(data);
+        if (data.token) {
+            // Store the token in local storage
+            localStorage.setItem('token', data.token);
+    
+            toast.success('Login successful! Redirecting...');
+            setTimeout(() => navigate('/'), 3000); // Navigate to the dashboard or appropriate page after login
+          } else {
+            // Handle any case where the token is not present
+            toast.error('Login successful, but no access token received.');
+          }
+        },
       onError: (error) => {
         console.log(error);
         // This will run when the mutation encounters an error
