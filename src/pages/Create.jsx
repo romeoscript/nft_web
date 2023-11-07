@@ -1,12 +1,19 @@
 import React, { useState } from 'react'
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
+import CopyToClipboardButton from '../components/Copy';
+import Swal from 'sweetalert2'; 
+import { useNavigate } from 'react-router-dom';
 
 
 const Create = () => {
+    const navigate = useNavigate();
 
     const [file, setFile] = useState(null);
     const [previewUrl, setPreviewUrl] = useState('');
+    const [blockchain, setBlockchain] = useState('');
+    const [nftName, setNftName] = useState('');
+    const [description, setDescription] = useState('');
 
     const handleFileChange = (event) => {
         const file = event.target.files[0];
@@ -21,9 +28,68 @@ const Create = () => {
         }
         setFile(file);
     };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        const token = localStorage.getItem('token');
+        const formData = new FormData();
+
+        // Append the form data
+        formData.append('blockchain', blockchain);
+        formData.append('name', nftName);
+        formData.append('description', description);
+        if (file) {
+            formData.append('image', file);
+        }
+
+        try {
+            const response = await fetch(`https://nftapi-production-405a.up.railway.app/creatNft`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: formData, // We send formData directly
+            });
+
+            if (!response.ok) {
+                throw new Error('Failed to create NFT.');
+            }
+
+            const data = await response.json();
+            // Show success alert using SweetAlert2
+            Swal.fire({
+                icon: 'success',
+                title: 'NFT created successfully!, verification pending',
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            setFile(null);
+            setPreviewUrl('');
+            setBlockchain('');
+            setNftName('');
+            setDescription('');
+
+            // Handle success, perhaps navigate to a new page or clear the form
+            console.log('NFT created:', data);
+            // Reset form or show success message
+            navigate('/mynft');
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Creation failed: ' + error.message,
+              });
+            // Handle error, show error message to user
+            console.error('Creation failed:', error);
+        }
+    };
+
+    const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
+    const total = 0.03
     return (
         <>
-        <Navbar />
+            <Navbar />
             <div className="text-sm breadcrumbs py-[2rem] px-[4rem]">
                 <ul>
                     <li><a>Home</a></li>
@@ -33,13 +99,14 @@ const Create = () => {
             <h2 className='text-center font-bold text-3xl'> Create NFT</h2>
             <section className='flex justify-center items-center flex-cols md:w-[50%] m-auto p-[3rem]'>
 
-                <form action="" className='w-full'>
+                <form className='w-full' onSubmit={handleSubmit}>
                     <div className="form-control w-full ">
                         <label className="label">
                             <span className="label-text">Blockchain <span className='text-[red]'>*</span></span>
 
                         </label>
-                        <select className="select select-bordered">
+                        <select className="select select-bordered" value={blockchain}
+                            onChange={(e) => setBlockchain(e.target.value)}>
                             <option disabled selected>Select</option>
                             <option>Ethereum</option>
                             <option>Polygon</option>
@@ -61,6 +128,7 @@ const Create = () => {
                             onChange={handleFileChange}
                             className="hidden"
                             id="file"
+                            name='image'
                         />
                         <label
                             htmlFor="file"
@@ -96,14 +164,17 @@ const Create = () => {
                         <label className="label">
                             <span className="label-text">NFT name <span className='text-[red]'>*</span></span>
                         </label>
-                        <input type="text" placeholder="Type here" className="input input-bordered w-full " />
+                        <input type="text" placeholder="Type here" value={nftName}
+                            onChange={(e) => setNftName(e.target.value)}
+                            className="input input-bordered w-full " />
 
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
                             <span className="label-text">Add descriptions to your NFT <span className='text-[red]'>*</span></span>
                         </label>
-                        <textarea className="textarea textarea-bordered" placeholder="Description..."></textarea>
+                        <textarea className="textarea textarea-bordered" value={description}
+                            onChange={(e) => setDescription(e.target.value)} placeholder="Description..."></textarea>
                     </div>
 
                     <div className="form-control w-52 my-[2rem]">
@@ -113,7 +184,24 @@ const Create = () => {
                         </label>
                     </div>
 
-                    <button className="w-full btn btn-wide">Create NFT</button>
+                    <div className="w-full btn btn-wide" onClick={() => document.getElementById('my_modal_3').showModal()}>Create NFT</div>
+
+                    <dialog id="my_modal_3" className="modal">
+                        <div className="modal-box">
+                            <form method="dialog">
+                                {/* if there is a button in form, it will close the modal */}
+                                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                            </form>
+                            <div className=' text-white flex flex-col items-center text-[10px] my-[1rem]'>
+                                Deposit {total} ETh to <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
+                                    <CopyToClipboardButton textToCopy={text} /></p>
+                            </div>
+
+
+
+                            <button className="btn btn-outline btn-success" type='submit'> i have made this payment</button>
+                        </div>
+                    </dialog>
                 </form>
 
 
