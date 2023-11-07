@@ -31,8 +31,7 @@ const Mynfts = () => {
                 }
 
                 const data = await response.json();
-                console.log(data);
-                setNfts(data); // Set the NFTs in state
+                setNfts(data.filter(nft => nft.isPaid));
             } catch (e) {
                 setError(e.message); // Set any error that occurred
             } finally {
