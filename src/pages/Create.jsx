@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
 
 
 const Create = () => {
@@ -22,6 +23,7 @@ const Create = () => {
     };
     return (
         <>
+        <Navbar />
             <div className="text-sm breadcrumbs py-[2rem] px-[4rem]">
                 <ul>
                     <li><a>Home</a></li>

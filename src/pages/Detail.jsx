@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import CopyToClipboardButton from '../components/Copy';
+import { toast } from 'react-toastify';
+import Navbar from '../components/Navbar';
 
 const fetchNFT = async (tokenId) => {
     const response = await fetch(`https://nftapi-production-405a.up.railway.app/nft/${tokenId}`);
@@ -43,12 +45,45 @@ const Detail = () => {
     if (!nft) {
         return <div>NFT not found</div>;
     }
+    const handlePurchase = async () => {
+        const token = localStorage.getItem('token');
+        try {
+            const response = await fetch(`https://nftapi-production-405a.up.railway.app/buy/${tokenId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                    // Include other headers as required, e.g., authorization headers
+                },
+                body: JSON.stringify({
+                    tokenId: tokenId, // Make sure this is the correct payload for your API
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Purchase failed.');
+            }
+               // Parse JSON response
+        const data = await response.json();
+        
+        // Log the data to the console
+        console.log('Purchase response data:', data);
+        
+            // Show a success notification
+            toast.success('Purchase successful!, pending verification');
+        } catch (error) {
+            // Show an error notification
+            toast.error('Purchase failed: ' + error.message);
+        }
+    };
 
     const total = nft.price + (nft.price * 0.25)
     const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
 
+
     return (
         <>
+            <Navbar />
             <section className='md:flex justify-between p-[2rem] my-[3rem]'>
                 <div>
                     <img src={nft.image} alt="" className='md:w-[400px] w-full h-[400px] rounded-md object-cover' />
@@ -71,10 +106,10 @@ const Detail = () => {
                             {/* if there is a button in form, it will close the modal */}
                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                         </form>
-                       <div className=' text-white flex flex-col items-center text-[10px] my-[1rem]'>
-                        Deposit {total} ETh to <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
-                        <CopyToClipboardButton textToCopy={text} /></p>
-                       </div>
+                        <div className=' text-white flex flex-col items-center text-[10px] my-[1rem]'>
+                            Deposit {total} ETh to <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
+                                <CopyToClipboardButton textToCopy={text} /></p>
+                        </div>
                         <figure className='flex justify-around gap-[3%] items-center'>
                             <div>
                                 <img src={nft.image} alt="" className='w-[100px] h-[100px] rounded-md object-cover' />
@@ -110,7 +145,7 @@ const Detail = () => {
                             </figure>
                         </div>
 
-                        <button className="btn btn-outline btn-success"> i have made this payment</button>
+                        <button className="btn btn-outline btn-success" onClick={handlePurchase}> i have made this payment</button>
                     </div>
                 </dialog>
             </section>
