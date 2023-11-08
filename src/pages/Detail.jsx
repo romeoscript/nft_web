@@ -10,6 +10,7 @@ import CopyToClipboardButton from '../components/Copy';
 import { toast } from 'react-toastify';
 import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
+import { InfinitySpin } from 'react-loader-spinner';
 
 const fetchNFT = async (tokenId) => {
     const response = await fetch(`https://nftapi-production-405a.up.railway.app/nft/${tokenId}`);
@@ -39,9 +40,12 @@ const Detail = () => {
         staleTime: 1000 * 60,
     });
 
-    // if (isLoading) {
-    //     return <Loading />;
-    // }
+    if (isLoading) {
+        return <InfinitySpin
+            width='200'
+            color="#4fa94d"
+        />;
+    }
 
     if (isError) {
         return <div>Error: {error.message}</div>;
@@ -71,11 +75,13 @@ const Detail = () => {
             // Parse JSON response
             const data = await response.json();
 
-            // Log the data to the console
-            console.log('Purchase response data:', data);
 
             // Show a success notification
             toast.success('Purchase successful!, pending verification');
+            if (response.ok) {
+                Navigate('/mynft')
+            }
+
         } catch (error) {
             // Show an error notification
             toast.error('Purchase failed: ' + error.message);
@@ -148,7 +154,11 @@ const Detail = () => {
 
                             </figure>
                         </div>
-                        {token ? <button className="btn btn-outline btn-success" onClick={handlePurchase}> i have made this payment</button> : <button className="btn btn-outline btn-warning" onClick={login}> Login to  Purchase</button>}
+                        {token ? <button className="btn btn-outline btn-success" onClick={handlePurchase}> {isLoading ? <InfinitySpin
+                            width='200'
+                            color="#4fa94d"
+                        /> : 'i have made this payment '}
+                        </button> : <button className="btn btn-outline btn-warning" onClick={login}> Login to  Purchase</button>}
 
                     </div>
                 </dialog>

@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import logo from '../assets/logo.svg'
 
 const Navbar = () => {
     const [user, setUser] = useState('');
@@ -59,7 +60,7 @@ const Navbar = () => {
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
-                <Link to='/'> <a className="btn btn-ghost normal-case text-xl">PandaNFt</a></Link>
+                <Link to='/'> <img src={logo} alt="" /> <a className="btn btn-ghost normal-case text-xl">PandaNFt</a></Link>
             </div>
             <div className="flex-none gap-2">
                 <div className="form-control">

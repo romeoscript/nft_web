@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Button from "./Button";
-import Logo from "./Logo";
+import Logo from '../assets/logo.svg'
 
 const Section = styled.section`
   width: 100vw;
@@ -149,7 +149,7 @@ const Navigation = () => {
   return (
     <Section id="navigation">
       <NavBar>
-        <Logo />
+      <span className="flex items-center gap-2"> <img src={Logo} alt='logo'/> <span> Pandas</span></span>
         <HamburgerMenu click={+click} onClick={() => setClick(!click)}>
           &nbsp;
         </HamburgerMenu>

@@ -1,8 +1,9 @@
-import React,{useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { useLoginUser } from '../hooks/useRegister';
 import { IoEyeOffOutline, IoEyeOutline } from 'react-icons/io5';
+import { InfinitySpin } from 'react-loader-spinner';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -11,14 +12,14 @@ const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const togglePasswordVisibility = () => {
-      setShowPassword(!showPassword);
+        setShowPassword(!showPassword);
     };
-  
+
     const handleSubmit = (e) => {
         e.preventDefault();
         mutate({ email, password });
     };
-
+    console.log(isLoading);
     return (
         <>
             <div className="text-sm breadcrumbs py-[2rem] px-[4rem]">
@@ -70,7 +71,7 @@ const Login = () => {
                         </label>
                     </div>
 
-                    <button type='submit' className="w-full btn btn-wide">Login</button>
+                    <button type='submit' className="w-full btn btn-wide">{isLoading ? <InfinitySpin /> : 'Login'}</button>
                     <label className="label">
                         <span className="label-text-alt">New? <Link to='/register'> <a className='underline text-[blue]'>Register</a></Link></span>
                     </label>
