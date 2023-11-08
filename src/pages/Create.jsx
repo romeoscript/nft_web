@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import CopyToClipboardButton from '../components/Copy';
-import Swal from 'sweetalert2'; 
+import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -11,7 +11,7 @@ const Create = () => {
 
     const [file, setFile] = useState(null);
     const [previewUrl, setPreviewUrl] = useState('');
-    const [blockchain, setBlockchain] = useState('');
+    const [blockchain, setBlockchain] = useState('Ethereum');
     const [nftName, setNftName] = useState('');
     const [description, setDescription] = useState('');
 
@@ -41,7 +41,7 @@ const Create = () => {
         if (file) {
             formData.append('image', file);
         }
-
+        console.log(formData);
         try {
             const response = await fetch(`https://nftapi-production-405a.up.railway.app/creatNft`, {
                 method: 'POST',
@@ -79,7 +79,7 @@ const Create = () => {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Creation failed: ' + error.message,
-              });
+            });
             // Handle error, show error message to user
             console.error('Creation failed:', error);
         }
@@ -107,12 +107,12 @@ const Create = () => {
                         </label>
                         <select className="select select-bordered" value={blockchain}
                             onChange={(e) => setBlockchain(e.target.value)}>
-                            <option disabled selected>Select</option>
-                            <option>Ethereum</option>
-                            <option>Polygon</option>
-                            <option>Zksync Era</option>
-                            <option>Arbitrum One</option>
-                            <option>Bnb Chain</option>
+                            {/* <option disabled selected>Select</option> */}
+                            <option value="Ethereum">Ethereum</option>
+                            <option value="Polygon">Polygon</option>
+                            <option value="Zksync Era">Zksync Era</option>
+                            <option value="Arbitrum One">Arbitrum One</option>
+                            <option value="Bnb Chain">Bnb Chain</option>
                         </select>
 
                     </div>

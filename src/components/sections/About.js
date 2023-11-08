@@ -4,7 +4,7 @@ import styled, { ThemeProvider } from "styled-components";
 import Button from "../Button";
 import { dark, light } from "../../styles/Themes";
 import Loading from "../Loading";
-
+import { Link } from "react-router-dom";
 const Carousel = lazy(() => import("../Carousel"));
 
 const Section = styled.section`
@@ -132,6 +132,7 @@ const ButtonContainer = styled.div`
 `;
 
 const About = () => {
+  const token = localStorage.getItem("token");
   return (
     <Section id="about">
       <Container>
@@ -157,7 +158,15 @@ const About = () => {
           <ButtonContainer>
             <ThemeProvider theme={light}>
               <Button text="JOIN OUR DISCORD" link="#" newTab={true} />
-              <Button text="Create NFT" link="#" newTab={true} />
+              {token ? (
+                <Link to="create">
+                  <Button text="Create NFT" link="#" newTab={true} />
+                </Link>
+              ) : (
+                <Link to="login">
+                  <Button text="Create NFT" link="#" newTab={true} />
+                </Link>
+              )}
             </ThemeProvider>
           </ButtonContainer>
         </Box>

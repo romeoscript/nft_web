@@ -116,10 +116,10 @@ const Price = styled.div`
 const NftItem = ({ img, number = 0, price = 0 }) => {
   return (
     <ImgContainer>
-      <img width={500} height={400} src={img} alt="The Weirdos" />
+      <img width={500} height={400} src={img} alt="The Pandas" />
       <Details>
         <div>
-          <span>Weirdos</span> <br />
+          <span>Pandas</span> <br />
           <h1>#{number}</h1>
         </div>
 

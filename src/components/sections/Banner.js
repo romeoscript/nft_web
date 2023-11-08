@@ -146,17 +146,17 @@ const Banner = () => {
   return (
     <Section>
         <ImgContainer>
-        <img src={img1} width="500" height="400"  alt="The Weirdos" />
-        <img src={img2} width="500" height="400"  alt="The Weirdos" />
-        <img src={img3} width="500" height="400"  alt="The Weirdos" />
-        <img src={img4} width="500" height="400"  alt="The Weirdos" />
-        <img src={img5} width="500" height="400"  alt="The Weirdos" />
-        <img src={img6} width="500" height="400"  alt="The Weirdos" />
+        <img src={img1} width="500" height="400"  alt="The Pandas" />
+        <img src={img2} width="500" height="400"  alt="The Pandas" />
+        <img src={img3} width="500" height="400"  alt="The Pandas" />
+        <img src={img4} width="500" height="400"  alt="The Pandas" />
+        <img src={img5} width="500" height="400"  alt="The Pandas" />
+        <img src={img6} width="500" height="400"  alt="The Pandas" />
 
         </ImgContainer>
         <Title>Join the
         <br/>
-        Weirdos Club
+        Pandas Club
         </Title>
         <BtnContainer>
         <JoinNow>

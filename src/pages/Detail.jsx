@@ -9,6 +9,7 @@ import { useParams } from 'react-router-dom';
 import CopyToClipboardButton from '../components/Copy';
 import { toast } from 'react-toastify';
 import Navbar from '../components/Navbar';
+import { useNavigate } from 'react-router-dom';
 
 const fetchNFT = async (tokenId) => {
     const response = await fetch(`https://nftapi-production-405a.up.railway.app/nft/${tokenId}`);
@@ -19,6 +20,10 @@ const fetchNFT = async (tokenId) => {
 };
 
 const Detail = () => {
+    const Navigate = useNavigate()
+    const login = () => {
+        Navigate("/login")
+    }
 
     const { tokenId } = useParams();
 
@@ -63,12 +68,12 @@ const Detail = () => {
             if (!response.ok) {
                 throw new Error('Purchase failed.');
             }
-               // Parse JSON response
-        const data = await response.json();
-        
-        // Log the data to the console
-        console.log('Purchase response data:', data);
-        
+            // Parse JSON response
+            const data = await response.json();
+
+            // Log the data to the console
+            console.log('Purchase response data:', data);
+
             // Show a success notification
             toast.success('Purchase successful!, pending verification');
         } catch (error) {
@@ -79,11 +84,10 @@ const Detail = () => {
 
     const total = nft.price + (nft.price * 0.25)
     const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
-
-
+    const token = localStorage.getItem('token')
     return (
         <>
-            <Navbar />
+            {token && <Navbar />}
             <section className='md:flex justify-between p-[2rem] my-[3rem]'>
                 <div>
                     <img src={nft.image} alt="" className='md:w-[400px] w-full h-[400px] rounded-md object-cover' />
@@ -144,8 +148,8 @@ const Detail = () => {
 
                             </figure>
                         </div>
+                        {token ? <button className="btn btn-outline btn-success" onClick={handlePurchase}> i have made this payment</button> : <button className="btn btn-outline btn-warning" onClick={login}> Login to  Purchase</button>}
 
-                        <button className="btn btn-outline btn-success" onClick={handlePurchase}> i have made this payment</button>
                     </div>
                 </dialog>
             </section>

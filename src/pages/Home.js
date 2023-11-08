@@ -9,11 +9,14 @@ import Footer from "../components/Footer";
 import Faq from "../components/sections/Faq";
 import ScrollToTop from "../components/ScrollToTop";
 import CreateInfo from "../components/sections/CreateInfo";
+import Navbar from "../components/Navbar";
 
 function Home() {
+  const token = localStorage.getItem("token")
   return (
     <main>
-      <Navigation />
+      {token?<Navbar />: <Navigation />}
+      {/* <Navigation /> */}
       <HomeSection />
 
       <CreateInfo />

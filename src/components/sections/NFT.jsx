@@ -23,6 +23,7 @@ const ImgContainer = styled.div`
     width: 100%;
     height: 240px;
     border-radius:20px;
+    
    
   }
 `;
@@ -79,10 +80,10 @@ const NftItem = ({ img, name, number = 0, price = 0 }) => {
       
     return (
       <ImgContainer>
-        <img  className='object-contain h-full w-[2px]' src={img} alt="The Weirdos" />
+        <img  className='object-cover h-full w-[2px]' src={img} alt="The Pandas" />
         <Details>
           <div>
-            <span>{truncate(name, 10)}</span> <br />
+            <span>{truncate(name, 6)}</span> <br />
             <h1>#{number}</h1>
           </div>
   

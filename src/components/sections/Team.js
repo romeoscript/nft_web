@@ -45,7 +45,7 @@ const Container = styled.div`
   }
   @media (max-width: 48em) {
     width: 90%;
-    justify-content: center;
+    justify-content: space-around;
   }
 `;
 

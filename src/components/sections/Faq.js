@@ -110,7 +110,7 @@ const Faq = () => {
             ScrollTrigger={ScrollTrigger}
             title="WHY DO WE NEED ROYALTIES?"
           >
-            The amount of royalties was fixed at 5% to finance the Weirdos
+            The amount of royalties was fixed at 5% to finance the Pandas
             Club's projects. We have the ambition to organize multiple events
             around the world in order to strengthen the community and build a
             network of entrepreneurs and investors with the same mindset and
@@ -128,7 +128,7 @@ const Faq = () => {
           </Accordion>
           <Accordion
             ScrollTrigger={ScrollTrigger}
-            title="WHAT ARE THE WEIRDOS?
+            title="WHAT ARE THE Pandas?
 "
           >
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore
