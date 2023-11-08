@@ -180,11 +180,7 @@ const Footer = () => {
         <span>
           &copy; {new Date().getFullYear()} Pandas Club. All rights reserved.
         </span>
-        <span>
-          Made with &#10084; by <a href="https://devdreaming.com/about" target="_blank" rel="dofollow noreferrer">
-            CodeBucks
-          </a>
-        </span>
+       
       </Bottom>
     </Section>
   )
