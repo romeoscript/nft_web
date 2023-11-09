@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import Footer from '../components/Footer'
+import { Link } from 'react-router-dom'
 import { MdVerified } from 'react-icons/md'
-import Navbar from '../components/Navbar'
 import CopyToClipboardButton from '../components/Copy'
 import Layout from '../components/Layout'
 
@@ -70,7 +69,9 @@ const Mynfts = () => {
 
                 <div className="text-sm breadcrumbs py-[2rem] mt-[3rem] md:px-[4rem] px-[1rem]">
                     <ul>
-                        <li><a>Home</a></li>
+                    <Link to='/'>
+                        <li>Home</li>
+                    </Link>
                         <li>My Nfts</li>
                     </ul>
 

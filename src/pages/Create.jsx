@@ -3,7 +3,7 @@ import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import CopyToClipboardButton from '../components/Copy';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 
 
@@ -93,7 +93,9 @@ const Create = () => {
 
             <div className="text-sm breadcrumbs py-[2rem] px-[4rem]">
                 <ul>
-                    <li><a>Home</a></li>
+                    <Link to='/'>
+                        <li>Home</li>
+                    </Link>
                     <li>Add Document</li>
                 </ul>
             </div>

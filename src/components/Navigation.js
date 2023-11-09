@@ -202,10 +202,13 @@ const Navigation = () => {
   return (
     <Section id="navigation">
       <NavBar>
-        <span className="flex items-center gap-2">
+        <Link to="/">
           {" "}
-          <img src={Logo} alt="logo" /> <span> Pandas</span>
-        </span>
+          <span className="flex items-center gap-2">
+            {" "}
+            <img src={Logo} alt="logo" /> <span> Pandas</span>
+          </span>
+        </Link>
 
         {!token && (
           <div>
@@ -232,27 +235,20 @@ const Navigation = () => {
         )}
 
         {token && (
-          <div className="dropdown dropdown-end z-40">
-            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-              <div className="w-10 rounded-full flex justify-center items-center text-2xl ">
-                {user}
-                {/* <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" /> */}
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
-            >
+          <details className="dropdown">
+            <summary className="m-1 btn rounded-[30%] z-50">0.00 ETH <p className="bg-white z-[20] h-[40px] w-[40px] rounded-full flex items-center justify-center">  {user}</p> </summary>
+            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
               <li>
+                {" "}
                 <Link to="/mynft">MyNfts</Link>
               </li>
-              <Link to="/create">Create Nfts</Link>
-
-              <li onClick={logout}>
-                <a>Logout</a>
+              <li>
+                {" "}
+                <Link to="/create">Create Nfts</Link>
               </li>
+              <li onClick={logout}> Logout</li>
             </ul>
-          </div>
+          </details>
         )}
       </NavBar>
     </Section>
