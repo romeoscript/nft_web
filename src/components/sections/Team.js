@@ -97,6 +97,7 @@ const Team = () => {
       <section className="grid md:grid-cols-3 place-items-center">
         {currentNfts.map((nft) => {
           return (
+            <Link to={`nft/${nft.token_id}`} key={nft.token_id}>
             <div className="rounded-lg p-[1rem] bg-[#272D37] w-[300px] h-[400px] my-[2rem]">
               <img
                 src={nft.image}
@@ -120,6 +121,7 @@ const Team = () => {
                 <p className=" font-bold"> {(nft.price * 10000).toFixed(4)} ETH</p>
               </div>
             </div>
+            </Link>
           );
         })}
       </section>

@@ -50,7 +50,7 @@ export function useLoginUser() {
             localStorage.setItem('token', data.token);
     
             toast.success('Login successful! Redirecting...');
-            setTimeout(() => navigate('/'), 3000); // Navigate to the dashboard or appropriate page after login
+            setTimeout(() => navigate('/mynft'), 3000); // Navigate to the dashboard or appropriate page after login
           } else {
             // Handle any case where the token is not present
             toast.error('Login successful, but no access token received.');

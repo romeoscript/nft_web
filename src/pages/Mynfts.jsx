@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Footer from '../components/Footer'
 import { MdVerified } from 'react-icons/md'
 import Navbar from '../components/Navbar'
+import CopyToClipboardButton from '../components/Copy'
 
 const Mynfts = () => {
     const [nfts, setNfts] = useState([]);
@@ -49,10 +50,23 @@ const Mynfts = () => {
     if (error) {
         return <div>Error: {error}</div>;
     }
+
+    const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
     return (
         <div>
             <Navbar />
-            <div className="text-sm breadcrumbs py-[2rem] md:px-[4rem] px-[1rem]">
+            <div className="hero min-h-[20vh] relative" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
+                <div className="hero-overlay bg-opacity-60"></div>
+                <div className="hero-content absolute bottom-[-40%] left-0">
+                    <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="w-[70px] h-[70px] object-cover rounded-lg shadow-2xl rounded-[100%]" />
+                    <div className='  items-center text-[9px] my-[1rem]'>
+                      <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
+                            <CopyToClipboardButton textToCopy={text} /></p>
+                    </div>
+                </div>
+            </div>
+
+            <div className="text-sm breadcrumbs py-[2rem] mt-[3rem] md:px-[4rem] px-[1rem]">
                 <ul>
                     <li><a>Home</a></li>
                     <li>My Nfts</li>
