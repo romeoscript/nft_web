@@ -50,7 +50,9 @@ const Container = styled.div`
 `;
 
 const fetchNFTs = async () => {
-  const response = await fetch("https://nftapi-production-405a.up.railway.app/nft");
+  const response = await fetch(
+    "https://nftapi-production-405a.up.railway.app/nft"
+  );
   if (!response.ok) {
     throw new Error("Network response was not ok");
   }
@@ -69,7 +71,7 @@ const Team = () => {
     cacheTime: 1000 * 60 * 5, // cache data for 5 minutes
     staleTime: 1000 * 60,
   });
-  const pageSize = 12;
+  const pageSize = 9;
   const [currentPage, setCurrentPage] = useState(1);
 
   if (isLoading) {
@@ -91,7 +93,37 @@ const Team = () => {
         <ConfettiComponent />{" "}
       </Suspense>
       <Title>Team</Title>
-      <Container>
+
+      <section className="grid md:grid-cols-3 place-items-center">
+        {currentNfts.map((nft) => {
+          return (
+            <div className="rounded-lg p-[1rem] bg-[#272D37] w-[300px] h-[400px] my-[2rem]">
+              <img
+                src={nft.image}
+                alt=""
+                className="object-cover w-full rounded-lg h-[75%]"
+              />
+              <div className="flex items-center justify-between p-[1rem]">
+                <p>
+                  {" "}
+                  {nft.name} <span></span>
+                </p>
+                <p className="bg-[blue] text-[12px] rounded-md p-[0.5rem]">
+                  ETH
+                </p>
+              </div>
+              <div className="text-right">
+                <p>
+                  {" "}
+                  current bid <span></span>
+                </p>
+                <p className=" font-bold"> {(nft.price * 10000).toFixed(4)} ETH</p>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+      {/* <Container>
         {currentNfts.map((nft) => {
           return (
             <Link to={`nft/${nft.token_id}`}>
@@ -105,7 +137,7 @@ const Team = () => {
             </Link>
           );
         })}
-      </Container>
+      </Container> */}
       <br />
       <br />
       <br />

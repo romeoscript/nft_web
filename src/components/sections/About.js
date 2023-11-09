@@ -157,7 +157,7 @@ const About = () => {
           </SubTextLight>
           <ButtonContainer>
             <ThemeProvider theme={light}>
-              <Button text="JOIN OUR DISCORD" link="#" newTab={true} />
+             
               {token ? (
                 <Link to="create">
                   <Button text="Create NFT" link="#" newTab={true} />
