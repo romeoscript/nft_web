@@ -3,6 +3,7 @@ import Footer from '../components/Footer'
 import { MdVerified } from 'react-icons/md'
 import Navbar from '../components/Navbar'
 import CopyToClipboardButton from '../components/Copy'
+import Layout from '../components/Layout'
 
 const Mynfts = () => {
     const [nfts, setNfts] = useState([]);
@@ -53,46 +54,48 @@ const Mynfts = () => {
 
     const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
     return (
-        <div>
-            <Navbar />
-            <div className="hero min-h-[20vh] relative" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
-                <div className="hero-overlay bg-opacity-60"></div>
-                <div className="hero-content absolute bottom-[-40%] left-0">
-                    <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="w-[70px] h-[70px] object-cover rounded-lg shadow-2xl rounded-[100%]" />
-                    <div className='  items-center text-[9px] my-[1rem]'>
-                      <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
-                            <CopyToClipboardButton textToCopy={text} /></p>
+        <Layout>
+            <div>
+
+                <div className="hero min-h-[20vh] relative" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
+                    <div className="hero-overlay bg-opacity-60"></div>
+                    <div className="hero-content absolute bottom-[-40%] left-0">
+                        <img src="https://daisyui.com/images/stock/photo-1635805737707-575885ab0820.jpg" className="w-[70px] h-[70px] object-cover rounded-lg shadow-2xl rounded-[100%]" />
+                        <div className='  items-center text-[9px] my-[1rem]'>
+                            <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
+                                <CopyToClipboardButton textToCopy={text} /></p>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="text-sm breadcrumbs py-[2rem] mt-[3rem] md:px-[4rem] px-[1rem]">
-                <ul>
-                    <li><a>Home</a></li>
-                    <li>My Nfts</li>
-                </ul>
+                <div className="text-sm breadcrumbs py-[2rem] mt-[3rem] md:px-[4rem] px-[1rem]">
+                    <ul>
+                        <li><a>Home</a></li>
+                        <li>My Nfts</li>
+                    </ul>
 
-                <h2 className='text-center font-bold text-3xl capitalize my-[3rem]'>All collections</h2>
+                    <h2 className='text-center font-bold text-3xl capitalize my-[3rem]'>All collections</h2>
 
-                <figure className='my-[2rem] grid md:grid-cols-3  grid-cols-2'>
-                    {nfts.map(nft => {
-                        return (
-                            <div className="card md:w-[200px] w-[180px] h-[300px] glass my-[1rem]" key={nft.id}>
-                                <figure><img src={nft.image} alt="car!" /></figure>
-                                <div className="card-body p-[0.5rem]">
-                                    <h2 className="card-title text-sm">{nft.name} <span className='text-[green]'><MdVerified /></span></h2>
-                                    <p>{nft.description ? nft.description.substring(0, 40) + '...' : ''}</p>
-                                    <div className="card-actions justify-end w-full">
-                                        <button className="btn btn-primary w-full h-3/5">List For Sale</button>
+                    <figure className='my-[2rem] grid md:grid-cols-3  grid-cols-2'>
+                        {nfts.map(nft => {
+                            return (
+                                <div className="card md:w-[200px] w-[180px] h-[300px] glass my-[1rem]" key={nft.id}>
+                                    <figure><img src={nft.image} alt="car!" /></figure>
+                                    <div className="card-body p-[0.5rem]">
+                                        <h2 className="card-title text-sm">{nft.name} <span className='text-[green]'><MdVerified /></span></h2>
+                                        <p>{nft.description ? nft.description.substring(0, 40) + '...' : ''}</p>
+                                        <div className="card-actions justify-end w-full">
+                                            <button className="btn btn-primary w-full h-3/5">List For Sale</button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </figure>
+                            )
+                        })}
+                    </figure>
+                </div>
+
             </div>
-            <Footer />
-        </div>
+        </Layout>
     )
 }
 

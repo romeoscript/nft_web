@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import CopyToClipboardButton from '../components/Copy';
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 
 const Create = () => {
@@ -88,8 +89,8 @@ const Create = () => {
     const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
     const total = 0.03
     return (
-        <>
-            <Navbar />
+        <Layout>
+
             <div className="text-sm breadcrumbs py-[2rem] px-[4rem]">
                 <ul>
                     <li><a>Home</a></li>
@@ -206,8 +207,7 @@ const Create = () => {
 
 
             </section>
-            <Footer />
-        </>
+        </Layout>
     )
 }
 
