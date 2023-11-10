@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import Mynfts from "./pages/Mynfts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import ConfirmPurchase from "./components/Confirm";
 
 
 // import { lazy, Suspense } from "react";
@@ -44,6 +45,7 @@ function App() {
               />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/confirm" element={<ConfirmPurchase />} />
             </Routes>
           </ThemeProvider>
         </main>

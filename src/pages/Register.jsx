@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from '../components/Footer';
 import { Link } from 'react-router-dom';
 import { useRegisterUser } from '../hooks/useRegister';
@@ -11,7 +11,9 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const { mutate, isLoading, isError, error } = useRegisterUser();
     const [showPassword, setShowPassword] = useState(false);
-
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const togglePasswordVisibility = () => {
       setShowPassword(!showPassword);
     };
