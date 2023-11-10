@@ -101,7 +101,7 @@ const Detail = () => {
                     </div>
                     <div className='basis-[68%]'>
                         <h3 className='font-bold text-3xl capitalize text-white'>{nft.name}</h3>
-                        <p className='my-[1rem]'>{nft.description}</p>
+                        <p className='my-[1rem] text-gray-400'>{nft.description}</p>
 
                         <span className='capitalize text-gray-500 ' >price Bid</span>
                         <h2 className='my-[0.5rem] mb-[3rem] text-white'>{nft.price} ETH</h2>
@@ -175,14 +175,14 @@ const Detail = () => {
                             <h2 className='md:w-4/5 my-[2rem] text-gray-400 text-left text-gray-400'>{nft.description}</h2>
                             <div className='flex gap-20 capitalize '>
                                 <figure className='text-white text-sm'>
-                                    <span className='block font-bold text-grey-400'>contract address</span>
-                                    <span className='block my-[1rem] font-bold text-grey-400'>token id </span>
-                                    <span className='block font-bold text-grey-400'> blockchain</span>
+                                    <span className='block font-bold text-gray-400'>contract address</span>
+                                    <span className='block my-[1rem] font-bold text-gray-400'>token id </span>
+                                    <span className='block font-bold text-gray-400'> blockchain</span>
                                 </figure>
                                 <figure className='text-gray-400'>
                                     <span className='block  text-grey-400'>{nft.address.substring(0, 4) + '****' + nft.address.substring(nft.address.length - 4)}</span>
-                                    <span className='block my-[1rem] text-grey-400'>#{tokenId} </span>
-                                    <span className='block text-grey-400'> {nft.blockchain}</span>
+                                    <span className='block my-[1rem] text-gray-400'>#{tokenId} </span>
+                                    <span className='block text-gray-400'> {nft.blockchain}</span>
                                 </figure>
                             </div>
                         </TabPanel>
