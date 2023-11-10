@@ -63,7 +63,7 @@ const Mynfts = () => {
     const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
     return (
         <Layout>
-            <div className='text-white'>
+            <div className='text-white mt-[70px]'>
 
                 <div className="hero min-h-[20vh] relative" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
                     <div className="hero-overlay bg-opacity-60"></div>

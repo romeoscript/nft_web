@@ -6,6 +6,9 @@ import Logo from "../assets/logo.svg";
 
 const Section = styled.section`
   width: 100vw;
+  position: fixed;
+  top: 0;
+  z-index: 100;
   background-color: ${(props) => props.theme.body};
 `;
 const NavBar = styled.nav`
@@ -236,7 +239,13 @@ const Navigation = () => {
 
         {token && (
           <details className="dropdown">
-            <summary className="m-1 btn rounded-[30%] z-50">0.00 ETH <p className="bg-white z-[20] h-[40px] w-[40px] rounded-full flex items-center justify-center">  {user}</p> </summary>
+            <summary className="m-1 btn rounded-[30%] z-50">
+              0.00 ETH{" "}
+              <p className="bg-white z-[20] h-[40px] w-[40px] rounded-full flex items-center justify-center">
+                {" "}
+                {user}
+              </p>{" "}
+            </summary>
             <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
               <li>
                 {" "}

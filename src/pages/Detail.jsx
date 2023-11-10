@@ -95,7 +95,7 @@ const Detail = () => {
         <Layout>
             <>
 
-                <section className='md:flex justify-between p-[2rem] my-[3rem]'>
+                <section className='md:flex justify-between p-[2rem] my-[3rem] mt-[70px]'>
                     <div>
                         <img src={nft.image} alt="" className='md:w-[400px] w-full h-[400px] rounded-md object-cover' />
                     </div>

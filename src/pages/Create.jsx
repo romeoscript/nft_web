@@ -27,7 +27,7 @@ const Create = () => {
         if (file && file.type.substr(0, 5) === 'image') {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setPreviewUrl(reader.result);
+                setPreviewUrl(reader.result);   
             };
             reader.readAsDataURL(file);
         } else {
@@ -97,7 +97,7 @@ const Create = () => {
     return (
         <Layout>
 
-            <div className="text-sm breadcrumbs py-[2rem] px-[4rem]">
+            <div className="text-sm breadcrumbs py-[2rem] px-[4rem] mt-[70px]">
             <div role="presentation" onClick={handleClick}>
                     <Breadcrumbs aria-label="breadcrumb">
                         <Link underline="hover" color="inherit" to="/">

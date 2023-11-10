@@ -98,7 +98,7 @@ const Team = () => {
         {currentNfts.map((nft) => {
           return (
             <Link to={`nft/${nft.token_id}`} key={nft.token_id}>
-              <div className="rounded-lg p-[1rem] bg-[#272D37] w-[300px] h-[400px] my-[2rem]">
+              <div className="rounded-lg p-[1rem] bg-[#272D37] w-[350px] h-[420px] my-[2rem]">
                 <img
                   src={nft.image}
                   alt=""
@@ -107,7 +107,7 @@ const Team = () => {
                 <div className="flex items-center justify-between p-[1rem]">
                   <p className="text-white">
                     {" "}
-                    {nft.name.length > 10 ? `${nft.name.substring(0, 10)}...` : nft.name} <span></span>
+                    {nft.name.length > 10 ? `${nft.name.substring(0, 20)}...` : nft.name} <span></span>
                   </p>
                   <p className="bg-[blue] text-[12px] rounded-md p-[0.5rem]">
                     ETH
@@ -120,7 +120,7 @@ const Team = () => {
                   </p>
                   <p className=" font-bold">
                     {" "}
-                    {(nft.price * 10000).toFixed(4)} ETH
+                    {nft.price*10000} ETH
                   </p>
                 </div>
               </div>
