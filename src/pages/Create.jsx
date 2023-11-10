@@ -5,8 +5,14 @@ import CopyToClipboardButton from '../components/Copy';
 import Swal from 'sweetalert2';
 import { Link, useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
 
 
+function handleClick(event) {
+    event.preventDefault();
+    console.info('You clicked a breadcrumb.');
+}
 const Create = () => {
     const navigate = useNavigate();
 
@@ -92,12 +98,15 @@ const Create = () => {
         <Layout>
 
             <div className="text-sm breadcrumbs py-[2rem] px-[4rem]">
-                <ul className='text-white'>
-                    <Link to='/'>
-                        <li>Home</li>
-                    </Link>
-                    <li>Add Document</li>
-                </ul>
+            <div role="presentation" onClick={handleClick}>
+                    <Breadcrumbs aria-label="breadcrumb">
+                        <Link underline="hover" color="inherit" to="/">
+                            Home
+                        </Link>
+                   
+                        <Typography color="text.primary">create</Typography>
+                    </Breadcrumbs>
+                </div>
             </div>
             <h2 className='text-center font-bold text-3xl text-white'> Create NFT</h2>
             <section className='flex justify-center items-center flex-cols md:w-[50%] m-auto p-[3rem]'>

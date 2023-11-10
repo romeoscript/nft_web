@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom'
 import { MdVerified } from 'react-icons/md'
 import CopyToClipboardButton from '../components/Copy'
 import Layout from '../components/Layout'
+import Typography from '@mui/material/Typography';
+import Breadcrumbs from '@mui/material/Breadcrumbs';
+
+
+function handleClick(event) {
+    event.preventDefault();
+    console.info('You clicked a breadcrumb.');
+}
+
 
 const Mynfts = () => {
     const [nfts, setNfts] = useState([]);
@@ -54,7 +63,7 @@ const Mynfts = () => {
     const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
     return (
         <Layout>
-            <div className='text-gray-500'>
+            <div className='text-white'>
 
                 <div className="hero min-h-[20vh] relative" style={{ backgroundImage: 'url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)' }}>
                     <div className="hero-overlay bg-opacity-60"></div>
@@ -66,14 +75,17 @@ const Mynfts = () => {
                         </div>
                     </div>
                 </div>
-
-                <div className="text-sm breadcrumbs py-[2rem] mt-[3rem] md:px-[4rem] px-[1rem]">
-                    <ul>
-                    <Link to='/'>
-                        <li>Home</li>
-                    </Link>
-                        <li>My Nfts</li>
-                    </ul>
+               
+                <div className="text-sm breadcrumbs py-[2rem] mt-[3rem] md:px-[4rem]  px-[1rem]">
+                <div role="presentation" onClick={handleClick}>
+                    <Breadcrumbs aria-label="breadcrumb">
+                        <Link underline="hover" color="inherit" to="/">
+                            Home
+                        </Link>
+                   
+                        <Typography color="text.primary">My Nfts</Typography>
+                    </Breadcrumbs>
+                </div>
 
                     <h2 className='text-center font-bold text-3xl capitalize my-[3rem]'>All collections</h2>
 
@@ -84,7 +96,7 @@ const Mynfts = () => {
                                     <figure><img src={nft.image} alt="car!" /></figure>
                                     <div className="card-body p-[0.5rem]">
                                         <h2 className="card-title text-sm">{nft.name} <span className='text-[green]'><MdVerified /></span></h2>
-                                        <p>{nft.description ? nft.description.substring(0, 40) + '...' : ''}</p>
+                                        <p>{nft.description ? nft.description.substring(0, 20) + '...' : ''}</p>
                                         <div className="card-actions justify-end w-full">
                                             <button className="btn btn-primary w-full h-3/5">List For Sale</button>
                                         </div>
