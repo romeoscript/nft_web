@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ConfirmPurchase = () => {
     useEffect(() => {
@@ -9,15 +11,16 @@ const ConfirmPurchase = () => {
             confirmPayment(token);
         }
     }, []);
-    const tokenss = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzLCJlbWFpbCI6ImRvZUBnbWFpbC5jb20iLCJpYXQiOjE2OTk2NTYwOTZ9.QCPK4ovixpsO9UfH-rSDfwhj8C2F0NLiBIKMsbnbLBI'
+
+    const tokenss = 'your-token-here'; // Replace with your actual token
+
     const confirmPayment = async (token) => {
         try {
-            const response = await fetch(`https://nftapi-production-405a.up.railway.app/confirm-payment/${token}`, {
+            const response = await fetch(`https://nftapi-production-405a.up.railway.app/confirm-pay/${token}`, {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${tokenss}`,
-                    // Add headers if needed, like 'Content-Type': 'application/json'
-                    // If authorization is required, add the appropriate header
+                    // Additional headers if needed
                 },
                 body: JSON.stringify({
                     // Add body data if required by your API
@@ -29,18 +32,16 @@ const ConfirmPurchase = () => {
             }
 
             const data = await response.json();
-            console.log('Success:', data);
-            // Handle success, maybe update the state to display a success message
+            toast.success('Success: Payment confirmed!');
         } catch (error) {
-            console.error('Error:', error);
-            // Handle errors, maybe update the state to display an error message
+            toast.error(`Error: ${error.message}`);
         }
     };
 
     return (
         <div>
             <h2>Confirming Purchase...</h2>
-            {/* Here you can render success or error messages based on the state */}
+            <ToastContainer position="top-center" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover />
         </div>
     );
 };
