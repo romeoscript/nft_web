@@ -16,7 +16,7 @@ const ConfirmPurchase = () => {
 
     const confirmPayment = async (token) => {
         try {
-            const response = await fetch(`https://nftapi-production-405a.up.railway.app/confirm-pay/${token}`, {
+            const response = await fetch(`https://nftapi-production-405a.up.railway.app/confirm_pay/${token}`, {
                 method: 'PATCH',
                 headers: {
                     'Authorization': `Bearer ${tokenss}`,
