@@ -172,17 +172,17 @@ const Detail = () => {
                         </TabList>
 
                         <TabPanel>
-                            <h2 className='w-4/5 my-[2rem]'>{nft.description}</h2>
-                            <div className='flex gap-20 capitalize'>
+                            <h2 className='md:w-4/5 my-[2rem] text-gray-400 text-left'>{nft.description}</h2>
+                            <div className='flex gap-20 capitalize '>
                                 <figure>
-                                    <span className='block'>contract address</span>
-                                    <span className='block my-[1rem]'>token id </span>
-                                    <span className='block'> blockchain</span>
+                                    <span className='block font-bold text-grey-400'>contract address</span>
+                                    <span className='block my-[1rem] font-bold text-grey-400'>token id </span>
+                                    <span className='block font-bold text-grey-400'> blockchain</span>
                                 </figure>
                                 <figure>
-                                    <span className='block'>{nft.address.substring(0, 4) + '****' + nft.address.substring(nft.address.length - 4)}</span>
-                                    <span className='block my-[1rem]'>#{tokenId} </span>
-                                    <span className='block'> {nft.blockchain}</span>
+                                    <span className='block  text-grey-400'>{nft.address.substring(0, 4) + '****' + nft.address.substring(nft.address.length - 4)}</span>
+                                    <span className='block my-[1rem] text-grey-400'>#{tokenId} </span>
+                                    <span className='block text-grey-400'> {nft.blockchain}</span>
                                 </figure>
                             </div>
                         </TabPanel>
