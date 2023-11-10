@@ -4,7 +4,7 @@ import Footer from './Footer'
 import Navigation from './Navigation'
 const Layout = ({ children }) => {
     return (
-        <div>
+        <div className='bg-[#272D37]'>
             <Navigation />
             {children}
             <Footer />

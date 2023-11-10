@@ -132,11 +132,19 @@ const Create = () => {
                             className="hidden"
                             id="file"
                             name='image'
+                            accept='image/*'
                         />
-                        <label
+                        {file ? <label htmlFor="file" className="block">
+                            <img
+                                src={previewUrl}
+                                alt="Preview"
+                                className="w-64 h-64 object-cover border rounded-lg cursor-pointer"
+                            />
+                        </label> : <label
                             htmlFor="file"
                             className="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue-100 hover:text-white"
                         >
+
                             <svg
                                 className="w-8 h-8"
                                 fill="currentColor"
@@ -146,7 +154,7 @@ const Create = () => {
                                 <path d="M16.7,5.3l-1.9-2c-0.2-0.2-0.5-0.3-0.7-0.3H6c-0.6,0-1,0.4-1,1v14c0,0.6,0.4,1,1,1h8c0.6,0,1-0.4,1-1V6C15,5.7,15.9,5.5,16.7,5.3z M14,7v2h-4V7H14z M14,13v2h-4v-2H14z M10,7v2H6V7H10z M10,13v2H6v-2H10z" />
                             </svg>
                             <span className="mt-2 text-base leading-normal">Select a file</span>
-                        </label>
+                        </label>}
 
                         {/* {file && (
                             <div className="mt-4">

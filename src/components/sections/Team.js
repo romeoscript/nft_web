@@ -98,29 +98,32 @@ const Team = () => {
         {currentNfts.map((nft) => {
           return (
             <Link to={`nft/${nft.token_id}`} key={nft.token_id}>
-            <div className="rounded-lg p-[1rem] bg-[#272D37] w-[300px] h-[400px] my-[2rem]">
-              <img
-                src={nft.image}
-                alt=""
-                className="object-cover w-full rounded-lg h-[75%]"
-              />
-              <div className="flex items-center justify-between p-[1rem]">
-                <p>
-                  {" "}
-                  {nft.name} <span></span>
-                </p>
-                <p className="bg-[blue] text-[12px] rounded-md p-[0.5rem]">
-                  ETH
-                </p>
+              <div className="rounded-lg p-[1rem] bg-[#272D37] w-[300px] h-[400px] my-[2rem]">
+                <img
+                  src={nft.image}
+                  alt=""
+                  className="object-cover w-full rounded-lg h-[75%]"
+                />
+                <div className="flex items-center justify-between p-[1rem]">
+                  <p className="text-white">
+                    {" "}
+                    {nft.name.length > 10 ? `${nft.name.substring(0, 10)}...` : nft.name} <span></span>
+                  </p>
+                  <p className="bg-[blue] text-[12px] rounded-md p-[0.5rem]">
+                    ETH
+                  </p>
+                </div>
+                <div className="text-right text-white mb-[1rem]">
+                  <p className="text-sm">
+                    {" "}
+                    current bid <span></span>
+                  </p>
+                  <p className=" font-bold">
+                    {" "}
+                    {(nft.price * 10000).toFixed(4)} ETH
+                  </p>
+                </div>
               </div>
-              <div className="text-right">
-                <p>
-                  {" "}
-                  current bid <span></span>
-                </p>
-                <p className=" font-bold"> {(nft.price * 10000).toFixed(4)} ETH</p>
-              </div>
-            </div>
             </Link>
           );
         })}
