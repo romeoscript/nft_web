@@ -164,7 +164,7 @@ const Detail = () => {
                     </dialog>
                 </section>
 
-                <section className='w-4/5 m-auto'>
+                <section className='w-4/5 m-auto text-white'>
                     <Tabs>
                         <TabList>
                             <Tab>Description</Tab>
@@ -172,14 +172,14 @@ const Detail = () => {
                         </TabList>
 
                         <TabPanel>
-                            <h2 className='md:w-4/5 my-[2rem] text-gray-400 text-left'>{nft.description}</h2>
+                            <h2 className='md:w-4/5 my-[2rem] text-gray-400 text-left text-gray-400'>{nft.description}</h2>
                             <div className='flex gap-20 capitalize '>
-                                <figure>
+                                <figure className='text-white text-sm'>
                                     <span className='block font-bold text-grey-400'>contract address</span>
                                     <span className='block my-[1rem] font-bold text-grey-400'>token id </span>
                                     <span className='block font-bold text-grey-400'> blockchain</span>
                                 </figure>
-                                <figure>
+                                <figure className='text-gray-400'>
                                     <span className='block  text-grey-400'>{nft.address.substring(0, 4) + '****' + nft.address.substring(nft.address.length - 4)}</span>
                                     <span className='block my-[1rem] text-grey-400'>#{tokenId} </span>
                                     <span className='block text-grey-400'> {nft.blockchain}</span>

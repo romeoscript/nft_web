@@ -92,20 +92,20 @@ const Create = () => {
         <Layout>
 
             <div className="text-sm breadcrumbs py-[2rem] px-[4rem]">
-                <ul>
+                <ul className='text-white'>
                     <Link to='/'>
                         <li>Home</li>
                     </Link>
                     <li>Add Document</li>
                 </ul>
             </div>
-            <h2 className='text-center font-bold text-3xl'> Create NFT</h2>
+            <h2 className='text-center font-bold text-3xl text-white'> Create NFT</h2>
             <section className='flex justify-center items-center flex-cols md:w-[50%] m-auto p-[3rem]'>
 
                 <form className='w-full' onSubmit={handleSubmit}>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Blockchain <span className='text-[red]'>*</span></span>
+                            <span className="label-text text-white">Blockchain <span className='text-[red]'>*</span></span>
 
                         </label>
                         <select className="select select-bordered" value={blockchain}
@@ -122,7 +122,7 @@ const Create = () => {
                     <div className="form-control w-full my-[2rem] ">
 
                         <label className="label">
-                            <span className="label-text">File <span className='text-[red]'>*</span></span>
+                            <span className="label-text text-white">File <span className='text-[red]'>*</span></span>
 
                         </label>
 
@@ -173,7 +173,7 @@ const Create = () => {
                     </div>
                     <div className="form-control md:w-full my-[2rem]">
                         <label className="label">
-                            <span className="label-text">NFT name <span className='text-[red]'>*</span></span>
+                            <span className="label-text text-white">NFT name <span className='text-[red]'>*</span></span>
                         </label>
                         <input type="text" placeholder="Type here" value={nftName}
                             onChange={(e) => setNftName(e.target.value)}
@@ -182,7 +182,7 @@ const Create = () => {
                     </div>
                     <div className="form-control w-full ">
                         <label className="label">
-                            <span className="label-text">Add descriptions to your NFT <span className='text-[red]'>*</span></span>
+                            <span className="label-text text-white">Add descriptions to your NFT <span className='text-[red]'>*</span></span>
                         </label>
                         <textarea className="textarea textarea-bordered" value={description}
                             onChange={(e) => setDescription(e.target.value)} placeholder="Description..."></textarea>
@@ -190,7 +190,7 @@ const Create = () => {
 
                     <div className="form-control w-52 my-[2rem]">
                         <label className="cursor-pointer label">
-                            <span className="label-text">Lazy minting </span>
+                            <span className="label-text text-white">Lazy minting </span>
                             <input type="checkbox" className="toggle toggle-primary" checked />
                         </label>
                     </div>
