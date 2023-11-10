@@ -19,6 +19,9 @@ const Mynfts = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+    useEffect(() => {
         const fetchMyNFTs = async () => {
             try {
                 // Retrieve the access token from local storage
@@ -75,17 +78,17 @@ const Mynfts = () => {
                         </div>
                     </div>
                 </div>
-               
+
                 <div className="text-sm breadcrumbs py-[2rem] mt-[3rem] md:px-[4rem]  px-[1rem]">
-                <div role="presentation" onClick={handleClick}>
-                    <Breadcrumbs aria-label="breadcrumb">
-                        <Link underline="hover" color="inherit" to="/">
-                            Home
-                        </Link>
-                   
-                        <Typography color="text.primary">My Nfts</Typography>
-                    </Breadcrumbs>
-                </div>
+                    <div role="presentation" onClick={handleClick}>
+                        <Breadcrumbs aria-label="breadcrumb">
+                            <Link underline="hover" color="inherit" to="/">
+                                Home
+                            </Link>
+
+                            <Typography color="text.primary">My Nfts</Typography>
+                        </Breadcrumbs>
+                    </div>
 
                     <h2 className='text-center font-bold text-3xl capitalize my-[3rem]'>All collections</h2>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Footer from '../components/Footer';
 import Navbar from '../components/Navbar';
 import CopyToClipboardButton from '../components/Copy';
@@ -22,12 +22,16 @@ const Create = () => {
     const [nftName, setNftName] = useState('');
     const [description, setDescription] = useState('');
 
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const handleFileChange = (event) => {
         const file = event.target.files[0];
         if (file && file.type.substr(0, 5) === 'image') {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setPreviewUrl(reader.result);   
+                setPreviewUrl(reader.result);
             };
             reader.readAsDataURL(file);
         } else {
@@ -93,17 +97,17 @@ const Create = () => {
     };
 
     const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
-    const total = 0.03
+    const total = 0.2
     return (
         <Layout>
 
             <div className="text-sm breadcrumbs py-[2rem] px-[4rem] mt-[70px]">
-            <div role="presentation" onClick={handleClick}>
+                <div role="presentation" onClick={handleClick}>
                     <Breadcrumbs aria-label="breadcrumb">
                         <Link underline="hover" color="inherit" to="/">
                             Home
                         </Link>
-                   
+
                         <Typography color="text.primary">create</Typography>
                     </Breadcrumbs>
                 </div>
