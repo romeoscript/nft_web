@@ -12,7 +12,7 @@ const ConfirmPurchase = () => {
         }
     }, []);
 
-    const tokenss = 'your-token-here'; // Replace with your actual token
+    const tokenss = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEzLCJlbWFpbCI6ImRvZUBnbWFpbC5jb20iLCJpYXQiOjE2OTk2NDM5NDZ9.xN4zzCDNF0dD8Hi7B-3anQf5oPcuSMemiKPL9lTfD8A'; // Replace with your actual token
 
     const confirmPayment = async (token) => {
         try {
