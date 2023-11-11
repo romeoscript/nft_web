@@ -222,7 +222,6 @@ const Create = () => {
                             </div>
 
 
-
                             <button className="btn btn-outline btn-success" type='submit'> i have made this payment</button>
                         </div>
                     </dialog>

