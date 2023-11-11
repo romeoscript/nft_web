@@ -138,6 +138,7 @@ const HamburgerMenu = styled.span`
 const Navigation = () => {
   const [click, setClick] = useState(false);
   const [user, setUser] = useState("");
+  const [balance, setBalance] = useState(0.0);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
@@ -168,7 +169,8 @@ const Navigation = () => {
         }
 
         const data = await response.json();
-        setUser(data.email.slice(0, 1));
+        setUser(data.email);
+        setBalance(data.balance);
         //console.log(data.email.slice(0,1));
       } catch (e) {
         setError(e.message); // Set any error that occurred
@@ -240,13 +242,14 @@ const Navigation = () => {
         {token && (
           <details className="dropdown">
             <summary className="m-1 btn rounded-[30%] z-50">
-              0.00 ETH{" "}
+              {balance} ETH{" "}
               <p className="bg-white z-[20] h-[40px] w-[40px] rounded-full flex items-center justify-center">
                 {" "}
-                {user}
+                {user.slice(0, 1)}
               </p>{" "}
             </summary>
             <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+             
               <li>
                 {" "}
                 <Link to="/mynft">MyNfts</Link>
@@ -255,7 +258,8 @@ const Navigation = () => {
                 {" "}
                 <Link to="/create">Create Nfts</Link>
               </li>
-              <li onClick={logout}> Logout</li>
+              <li onClick={logout}> <Link to="/">Logout</Link> </li>
+              <li>{user}</li>
             </ul>
           </details>
         )}
