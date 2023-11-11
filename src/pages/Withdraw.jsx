@@ -51,7 +51,7 @@ const Withdraw = () => {
         <div>
             <Layout>
                 <>
-                    <div className="text-sm breadcrumbs my-[80px] py-[2rem] px-[4rem]">
+                    <div className="text-sm breadcrumbs text-white my-[80px] py-[2rem] px-[4rem]">
                         <ul>
                             <li><a>Home</a></li>
                             <li>Withdraw</li>
