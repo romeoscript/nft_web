@@ -211,13 +211,13 @@ const Create = () => {
                     <div className="w-full btn btn-wide" onClick={() => document.getElementById('my_modal_3').showModal()}>Create NFT</div>
 
                     <dialog id="my_modal_3" className="modal">
-                        <div className="modal-box">
+                        <div className="modal-box bg-[#272D37]">
                             <form method="dialog">
                                 {/* if there is a button in form, it will close the modal */}
                                 <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                             </form>
                             <div className=' text-white flex flex-col items-center text-[10px] my-[1rem]'>
-                                Deposit {total} ETh to <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
+                                Deposit {total} ETh to <br /> <p> <span className='rounded-md bg-[#36D300] p-[0.1rem] text-black'>{text}</span>
                                     <CopyToClipboardButton textToCopy={text} /></p>
                             </div>
 

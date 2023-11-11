@@ -252,6 +252,10 @@ const Navigation = () => {
              
               <li>
                 {" "}
+                <Link to="/withdraw">Withdraw</Link>
+              </li>
+              <li>
+                {" "}
                 <Link to="/mynft">MyNfts</Link>
               </li>
               <li>

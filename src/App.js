@@ -13,6 +13,7 @@ import Mynfts from "./pages/Mynfts";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ConfirmPurchase from "./components/Confirm";
+import Withdraw from "./pages/Withdraw";
 
 
 // import { lazy, Suspense } from "react";
@@ -46,6 +47,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/confirm" element={<ConfirmPurchase />} />
+              <Route path="/withdraw" element={<Withdraw />} />
             </Routes>
           </ThemeProvider>
         </main>
