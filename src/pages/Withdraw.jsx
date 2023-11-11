@@ -45,7 +45,7 @@ const Withdraw = () => {
             });
         }
     };
-    const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
+    const text = "0x8dfb83152168e645f4570961B8017c903C32c3c9";
     const total = 0.3
     return (
         <div>
