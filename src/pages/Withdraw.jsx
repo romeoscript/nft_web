@@ -46,7 +46,7 @@ const Withdraw = () => {
         }
     };
     const text = "0x39cb8b97b4c53fcfe2d54ea4bf92be07c55389b8";
-    const total = 0.2
+    const total = 0.3
     return (
         <div>
             <Layout>
@@ -57,14 +57,14 @@ const Withdraw = () => {
                             <li>Withdraw</li>
                         </ul>
                     </div>
-                    <h2 className='text-center font-bold text-3xl'> Withdraw</h2>
+                    <h2 className='text-center font-bold text-3xl text-white'> Withdraw</h2>
                     <section className='flex justify-center items-center flex-cols md:w-[50%] m-auto p-[3rem]'>
 
                         <form onSubmit={handleSubmit} className='w-full'>
 
                             <div className="form-control md:w-full my-[2rem]">
                                 <label className="label">
-                                    <span className="label-text">Amount <span className='text-[red]'>*</span></span>
+                                    <span className="label-text text-white">Amount <span className='text-[red]'>*</span></span>
                                 </label>
                                 <input type="number" value={amount}
                                     onChange={(e) => setAmount(e.target.value)} placeholder="Type here" className="input input-bordered w-full " />
@@ -72,7 +72,7 @@ const Withdraw = () => {
                             </div>
                             <div className="form-control md:w-full my-[2rem]">
                                 <label className="label">
-                                    <span className="label-text">Address <span className='text-[red]'>*</span></span>
+                                    <span className="label-text text-white">Address <span className='text-[red]'>*</span></span>
                                 </label>
                                 <div className="relative">
                                     <input
