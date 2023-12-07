@@ -96,7 +96,7 @@ const Mynfts = () => {
                         {nfts.map(nft => {
                             return (
                                 <div className="card md:w-[200px] w-[180px] h-[300px] glass my-[1rem]" key={nft.id}>
-                                    <figure><img src={nft.image} alt="car!" /></figure>
+                                    <figure className='h-[300px]'><img src={nft.image} alt="car!" className=' h-full object-cover w-full' /></figure>
                                     <div className="card-body p-[0.5rem]">
                                         <h2 className="card-title text-sm">{nft.name} <span className='text-[green]'><MdVerified /></span></h2>
                                         <p>{nft.description ? nft.description.substring(0, 20) + '...' : ''}</p>
