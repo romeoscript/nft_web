@@ -89,7 +89,7 @@ const Detail = () => {
     };
 
     const total = nft.price + (nft.price * 0.25)
-    const text = "0x8dfb83152168e645f4570961B8017c903C32c3c9";
+    const text = "0x4BCcBD7f670221Df9778Fc74684803CAaFB1A1E8";
     const token = localStorage.getItem('token')
     return (
         <Layout>
